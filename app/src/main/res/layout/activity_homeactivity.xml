@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/transition"
     android:orientation="vertical"
     android:gravity="center_vertical"
     tools:context=".homeactivity">
@@ -16,6 +17,7 @@
         android:text="Student"
         android:textColor="@color/white"
 android:textSize="30sp"
+
         android:background="@drawable/shape2"/>
 
     <Button
@@ -25,6 +27,7 @@ android:textSize="30sp"
         android:text="faculty"
         android:textColor="@color/white"
         android:textSize="30sp"
+
         android:background="@drawable/shape4"/>
 
 
