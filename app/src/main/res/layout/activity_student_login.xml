@@ -84,7 +84,7 @@
                 android:layout_marginTop="24dp"
                 android:background="@drawable/oval_shape_login"
                 android:padding="12dp"
-                android:text="LOGIN TO CLASSIFIEDS"
+                android:text="LOGIN TO Examination Portal"
                 android:textColor="@color/white" />
 
             <LinearLayout
@@ -102,7 +102,7 @@
             </LinearLayout>
 
             <!-- Signup Button -->
-            <android.support.v7.widget.AppCompatButton
+            <Button
                 android:id="@+id/btn_signup"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

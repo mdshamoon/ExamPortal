@@ -16,7 +16,7 @@ public class Student_login extends AppCompatActivity {
         fregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Student_login.this,faculty_register.class);
+                Intent intent=new Intent(Student_login.this,Student_register.class);
                 startActivity(intent);
             }
         });
