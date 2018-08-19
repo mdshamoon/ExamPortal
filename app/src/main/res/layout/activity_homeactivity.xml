@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".homeactivity">
+
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/grey"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@drawable/back"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <TextView
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:layout_marginLeft="125dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FACULTIES"
+
+            />
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/LOGIN"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:textColor="@color/white"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:text="LOGIN"
+                android:background="@drawable/shape3"
+                />
+            <Button
+                android:id="@+id/register"
+                android:textColor="@color/white"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:text="REGISTERATION"
+                android:background="@drawable/shape4"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@drawable/back"
+        android:layout_marginTop="300dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <TextView
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:layout_marginLeft="125dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STUDENTS"
+
+            />
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/LOGIN1"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:textColor="@color/white"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:text="LOGIN"
+                android:background="@drawable/shape3"
+                />
+            <Button
+                android:id="@+id/register1"
+                android:textColor="@color/white"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="110dp"
+                android:layout_height="35dp"
+                android:text="REGISTERATION"
+                android:background="@drawable/shape4"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>
