@@ -11,7 +11,7 @@ public class Student_login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_faculty_login);
+        setContentView(R.layout.activity_student_login);
         fregister=findViewById(R.id.btn_signup);
         fregister.setOnClickListener(new View.OnClickListener() {
             @Override
