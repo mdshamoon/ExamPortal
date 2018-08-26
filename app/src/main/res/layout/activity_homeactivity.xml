@@ -21,6 +21,7 @@ android:textSize="30sp"
         android:background="@drawable/shape2"/>
 
     <Button
+        android:layout_marginTop="10dp"
         android:id="@+id/faculty"
         android:layout_width="match_parent"
         android:layout_height="100dp"
