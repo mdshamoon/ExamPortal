@@ -60,17 +60,16 @@
                 >
 
 
-                <EditText
-                    android:inputType="text"
-                    android:id="@+id/branch"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Branch"
-
-                    android:padding="8dp"
-                    android:drawableStart="@drawable/branch"
+               <Spinner
+                   android:id="@+id/branch"
+                   android:drawableStart="@drawable/branch"
+                   android:layout_width="match_parent"
+                   android:layout_height="43dp"
                     android:background="@drawable/oval_shape_edittext"
-                    android:drawablePadding="15dp"/>
+                   android:spinnerMode="dropdown"
+                   >
+
+               </Spinner>
 
             </LinearLayout>
             <LinearLayout
@@ -141,16 +140,14 @@
                 >
 
 
-                <EditText
-                    android:inputType="textPassword"
+                <Spinner
+                    android:background="@drawable/oval_shape_edittext"
+                    android:spinnerMode="dropdown"
                     android:id="@+id/batch"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Batch"
-                    android:padding="8dp"
-                    android:drawableStart="@drawable/batch"
-                    android:background="@drawable/oval_shape_edittext"
-                    android:drawablePadding="15dp"/>
+                    android:layout_height="43dp">
+
+                </Spinner>
 
             </LinearLayout>
     <LinearLayout
