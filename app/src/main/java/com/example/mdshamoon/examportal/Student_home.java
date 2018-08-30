@@ -32,7 +32,7 @@ import java.util.Map;
 public class Student_home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final String URL_FOR_LOGIN = "https://spidersdsc.com/news.php";
-    TextView t1,t2,t3,t4;
+    TextView t1,t2,t3,t4,user,user1,rol;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +61,19 @@ public class Student_home extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
+        String name=getIntent().getExtras().getString("username");
+        String roll=getIntent().getExtras().getString("roll");
+        user=findViewById(R.id.name);
+        rol=headerView.findViewById(R.id.rol);
+
+        user1=headerView.findViewById(R.id.name1);
+        user.setText(" Hi  " + name);
+        user1.setText(name);
+        rol.setText(roll);
+
+
+
 
         String cancel_req_tag = "fetch";
         StringRequest strReq = new StringRequest(Request.Method.POST,

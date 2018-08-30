@@ -79,6 +79,7 @@ public class Student_login extends AppCompatActivity {
                                 Student_login.this,
                                 Student_home.class);
                         intent.putExtra("username", user);
+                        intent.putExtra("roll", email);
                         startActivity(intent);
                         finish();
                     } else {
