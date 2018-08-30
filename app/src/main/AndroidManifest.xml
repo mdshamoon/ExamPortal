@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mdshamoon.examportal">
-<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,7 +22,11 @@
         <activity android:name=".faculty_login" />
         <activity android:name=".faculty_register" />
         <activity android:name=".Student_login" />
-        <activity android:name=".Student_register"></activity>
+        <activity android:name=".Student_register" />
+        <activity
+            android:name=".Student_home"
+            android:label="@string/title_activity_student_home"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -40,7 +40,7 @@
 
 
                 <EditText
-                    android:id="@+id/input_id"
+                    android:id="@+id/rollno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Roll No"
