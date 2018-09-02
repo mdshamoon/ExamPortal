@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +36,7 @@ import java.util.Map;
 public class Student_home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final String URL_FOR_LOGIN = "https://spidersdsc.com/news.php";
-    TextView t1,t2,t3,t4,user,user1,rol;
+    TextView t1,t2,t3,t4,user,user1,rol,s1,s2,s3,s4,s5,s6;
     LinearLayout l1,text1;
     ViewGroup parent;
 
@@ -49,10 +50,16 @@ public class Student_home extends AppCompatActivity
         t3=findViewById(R.id.notice3);
         t4=findViewById(R.id.notice4);
         l1=findViewById(R.id.linear1);
+        s1=findViewById(R.id.subject1);
+        s2=findViewById(R.id.subject2);
+        s3=findViewById(R.id.subject3);
+        s4=findViewById(R.id.subject4);
+        s5=findViewById(R.id.subject5);
+        s6=findViewById(R.id.subject6);
         text1=findViewById(R.id.text12);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        setTitle("ExamPortal");
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
