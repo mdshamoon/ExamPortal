@@ -14,6 +14,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +36,10 @@ public class Student_home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final String URL_FOR_LOGIN = "https://spidersdsc.com/news.php";
     TextView t1,t2,t3,t4,user,user1,rol;
+    LinearLayout l1,text1;
+    ViewGroup parent;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +48,8 @@ public class Student_home extends AppCompatActivity
         t2=findViewById(R.id.notice2);
         t3=findViewById(R.id.notice3);
         t4=findViewById(R.id.notice4);
+        l1=findViewById(R.id.linear1);
+        text1=findViewById(R.id.text12);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -68,9 +77,10 @@ public class Student_home extends AppCompatActivity
         rol=headerView.findViewById(R.id.rol);
 
         user1=headerView.findViewById(R.id.name1);
-        user.setText(" Hi  " + name);
+
         user1.setText(name);
         rol.setText(roll);
+        parent= (ViewGroup) l1.getParent();
 
 
 
@@ -137,6 +147,8 @@ public class Student_home extends AppCompatActivity
 
 
 
+
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -175,17 +187,25 @@ public class Student_home extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.sessional) {
+
+            parent.removeView(l1);
+            text1.setVisibility(View.VISIBLE);
+
+
+
+
+
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.attendance) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.debarred) {
 
-        } else if (id == R.id.nav_manage) {
+        }
 
-        } else if (id == R.id.nav_share) {
+        else if (id == R.id.profile) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.share) {
 
         }
 
