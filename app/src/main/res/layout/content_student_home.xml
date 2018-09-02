@@ -17,7 +17,7 @@
        android:paddingEnd="5dp"
        android:background="@drawable/oval_shape_edittext"
        android:id="@+id/linear1"
-       android:layout_width="wrap_content"
+       android:layout_width="match_parent"
        android:layout_marginRight="@dimen/activity_horizontal_margin"
        android:orientation="vertical"
 
@@ -54,20 +54,81 @@
 
         android:layout_height="wrap_content" />
    </LinearLayout>
-
     <LinearLayout
-        android:visibility="invisible"
+        android:orientation="vertical"
         android:id="@+id/text12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <TextView
-
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:hint="sessional"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:hint="semester"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="cjkjcdndkccn"/>
+            android:text="Search"
+            />
+    <TableLayout
 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableRow
+            android:layout_margin="40dp"
+            >
+            <TextView
+                android:textSize="20dp"
+                android:layout_margin="20dp"
+                android:id="@+id/subject1"
+                android:text="23\n\n23"
+                />
+            <TextView
+                android:textSize="20dp"
+                android:layout_margin="20dp"
+                android:id="@+id/subject2"
+                android:text="23"
+                />
+            <TextView
+                android:textSize="20dp"
+                android:layout_margin="20dp"
+                android:id="@+id/subject3"
+                android:text="23"
+                />
+        </TableRow>
+        <TableRow
+            android:layout_margin="40dp"
+            >
+            <TextView
+                android:textSize="20dp"
+                android:layout_margin="20dp"
+                android:id="@+id/subject4"
+                android:text="23"
+                />
+            <TextView
+                android:textSize="20dp"
+                android:layout_margin="20dp"
+                android:id="@+id/subject5"
+                android:text="23"
+                />
+            <TextView
+                android:textSize="20dp"
+                android:layout_margin="20dp"
+                android:id="@+id/subject6"
+                android:text="23"
+                />
+        </TableRow>
 
+    </TableLayout>
     </LinearLayout>
-
 
 </LinearLayout>
