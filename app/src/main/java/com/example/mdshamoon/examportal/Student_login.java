@@ -1,7 +1,9 @@
 package com.example.mdshamoon.examportal;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,8 +28,10 @@ public class Student_login extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final String URL_FOR_LOGIN = "http://thdcihet.in/loginn.php";
     ProgressDialog progressDialog;
+    SharedPreferences sharedPreferences;
     private EditText rollno, password;
     private Button btnlogin;
+    public static final String MyPREFERENCES = "Login" ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +50,30 @@ public class Student_login extends AppCompatActivity {
         btnlogin=findViewById(R.id.btn_signin);
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
+        sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
+        if(!isUserLogedOut())
+        {
+           rollno.setText(sharedPreferences.getString("rollno","xx"));
+
+           password.setText(sharedPreferences.getString("password","xx"));
+            loginUser(rollno.getText().toString(),password.getText().toString());
+
+        }
+
+
+
+
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                editor.putString("rollno", rollno.getText().toString());
+                editor.putString("password", password.getText().toString());
+                editor.apply();
+                editor.commit();
                 loginUser(rollno.getText().toString(),password.getText().toString());
             }
         });
@@ -122,6 +146,14 @@ public class Student_login extends AppCompatActivity {
     private void hideDialog() {
         if (progressDialog.isShowing())
             progressDialog.dismiss();
+    }
+
+
+    public boolean isUserLogedOut() {
+        SharedPreferences sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        boolean isEmailEmpty = sharedPreferences.getString("rollno", "").isEmpty();
+        boolean isPasswordEmpty = sharedPreferences.getString("password", "").isEmpty();
+        return isEmailEmpty || isPasswordEmpty;
     }
 }
 
