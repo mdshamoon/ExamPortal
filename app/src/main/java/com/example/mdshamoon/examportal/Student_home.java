@@ -1,6 +1,8 @@
 package com.example.mdshamoon.examportal;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -71,6 +73,7 @@ public class Student_home extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View headerView = navigationView.getHeaderView(0);
+
         String name=getIntent().getExtras().getString("username");
         String roll=getIntent().getExtras().getString("roll");
         user=findViewById(R.id.name);
@@ -208,9 +211,23 @@ public class Student_home extends AppCompatActivity
         } else if (id == R.id.share) {
 
         }
+        else if(id==R.id.logout)
+        {
+         logout();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    public void logout()
+    {
+        SharedPreferences sharedpreferences = getSharedPreferences(Student_login.MyPREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.clear();
+        editor.commit();
+        Intent intent=new Intent(Student_home.this,Student_login.class);
+        startActivity(intent);
+        finish();
     }
 }
