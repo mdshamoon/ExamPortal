@@ -54,9 +54,9 @@ public class Student_login extends AppCompatActivity {
 
         if(!isUserLogedOut())
         {
-           rollno.setText(sharedPreferences.getString("rollno","xx"));
+           rollno.setText(sharedPreferences.getString("rollno",""));
 
-           password.setText(sharedPreferences.getString("password","xx"));
+           password.setText(sharedPreferences.getString("password",""));
             loginUser(rollno.getText().toString(),password.getText().toString());
 
         }
