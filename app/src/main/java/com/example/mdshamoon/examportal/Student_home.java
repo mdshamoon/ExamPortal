@@ -206,6 +206,7 @@ public class Student_home extends AppCompatActivity
 
 
 
+
             // Handle the camera action
         } else if (id == R.id.attendance) {
 
