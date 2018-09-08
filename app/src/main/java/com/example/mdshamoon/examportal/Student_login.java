@@ -26,7 +26,7 @@ import java.util.Map;
 public class Student_login extends AppCompatActivity {
     Button fregister;
     private static final String TAG = "LoginActivity";
-    private static final String URL_FOR_LOGIN = "http://thdcihet.in/loginn.php";
+    private static final String URL_FOR_LOGIN = "https://spidersdsc.com/loginn.php";
     ProgressDialog progressDialog;
     SharedPreferences sharedPreferences;
     private EditText rollno, password;
