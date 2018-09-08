@@ -26,7 +26,7 @@ import java.util.Map;
 public class Student_register extends AppCompatActivity {
 
     private static final String TAG = "RegisterActivity";
-    private static final String URL_FOR_REGISTRATION = "http://thdcihet.in/response.php";
+    private static final String URL_FOR_REGISTRATION = "https://spidersdsc.com/response.php";
     ProgressDialog progressDialog;
     String branchcontent[]={"choose your branch","C.S.E","E.C.E","Mechanical","Electrical","Civil"};
     String batchcontent[]={"choose your batch","2015","2016","2017","2018","2019","2020","2021","2022"};

@@ -7,11 +7,11 @@
     android:orientation="horizontal"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Student_home"
-    android:layout_marginLeft="15dp"
     android:layout_gravity="center"
     tools:showIn="@layout/app_bar_student_home">
 
    <LinearLayout
+       android:layout_marginLeft="15dp"
        android:paddingVertical="@dimen/activity_horizontal_margin"
        android:paddingStart="5dp"
        android:paddingEnd="5dp"
@@ -60,23 +60,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
+            android:layout_marginHorizontal="15dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <EditText
+            <Spinner
+                android:id="@+id/sessional"
                 android:hint="sessional"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <EditText
+            <Spinner
+                android:id="@+id/semester"
                 android:hint="semester"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <Button
+            android:background="@drawable/oval_shape_register"
+            android:textColor="@color/white"
+            android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:text="Search"
             />
     <TableLayout
@@ -88,21 +95,18 @@
             >
             <TextView
                 android:textSize="20dp"
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
                 android:id="@+id/subject1"
-                android:text="23\n\n23"
                 />
             <TextView
                 android:textSize="20dp"
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
                 android:id="@+id/subject2"
-                android:text="23"
                 />
             <TextView
                 android:textSize="20dp"
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
                 android:id="@+id/subject3"
-                android:text="23"
                 />
         </TableRow>
         <TableRow
@@ -110,21 +114,18 @@
             >
             <TextView
                 android:textSize="20dp"
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
                 android:id="@+id/subject4"
-                android:text="23"
                 />
             <TextView
                 android:textSize="20dp"
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
                 android:id="@+id/subject5"
-                android:text="23"
                 />
             <TextView
                 android:textSize="20dp"
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
                 android:id="@+id/subject6"
-                android:text="23"
                 />
         </TableRow>
 

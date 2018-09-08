@@ -1,5 +1,6 @@
 package com.example.mdshamoon.examportal;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,7 +19,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,10 +43,16 @@ import java.util.Map;
 public class Student_home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final String URL_FOR_LOGIN = "https://spidersdsc.com/news.php";
+    private static final String URL_FOR_FETCH = "https://spidersdsc.com/marks.php";
     TextView t1,t2,t3,t4,user,user1,rol,s1,s2,s3,s4,s5,s6;
+    Button search;
+    Spinner sessional,semester;
     LinearLayout l1,text1;
     ViewGroup parent;
-
+    String roll;
+    String sesscontent[]={"sessional","1","2"};
+    String semcontent[]={"semester","1","2","3","4","5","6","7","8"};
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +70,15 @@ public class Student_home extends AppCompatActivity
         s5=findViewById(R.id.subject5);
         s6=findViewById(R.id.subject6);
         text1=findViewById(R.id.text12);
+        search=findViewById(R.id.search);
+        sessional=findViewById(R.id.sessional);
+        semester=findViewById(R.id.semester);
+        progressDialog=new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        ArrayAdapter<String> adapter=new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,sesscontent);
+        ArrayAdapter<String> badapter=new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,semcontent);
+        sessional.setAdapter(adapter);
+        semester.setAdapter(badapter);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("ExamPortal");
@@ -66,10 +86,11 @@ public class Student_home extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Conatct Us -> 9456352200 , 8416933261", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -82,7 +103,7 @@ public class Student_home extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
 
         String name=getIntent().getExtras().getString("username");
-        String roll=getIntent().getExtras().getString("roll");
+         roll=getIntent().getExtras().getString("roll");
         user=findViewById(R.id.name);
         rol=headerView.findViewById(R.id.rol);
 
@@ -96,6 +117,7 @@ public class Student_home extends AppCompatActivity
 
 
         String cancel_req_tag = "fetch";
+
         StringRequest strReq = new StringRequest(Request.Method.POST,
                 URL_FOR_LOGIN, new Response.Listener<String>() {
 
@@ -150,7 +172,15 @@ public class Student_home extends AppCompatActivity
         ;
         // Adding request to request queue
         Appsingleton.getInstance(getApplicationContext()).addToRequestQueue(strReq,cancel_req_tag);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fetchMarks();
+
+            }
+        });
     }
+
 
 
 
@@ -237,4 +267,76 @@ public class Student_home extends AppCompatActivity
         startActivity(intent);
         finish();
     }
-}
+
+
+    public void fetchMarks(){
+        final String sess=sessional.getSelectedItem().toString();
+        final String sem=semester.getSelectedItem().toString();
+        String cancel_req_tag1 = "fetch";
+        progressDialog.setMessage("fetching");
+        progressDialog.show();
+        StringRequest strReq1 = new StringRequest(Request.Method.POST,
+                URL_FOR_FETCH, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    progressDialog.dismiss();
+
+                    JSONObject jsonObject=new JSONObject(response);
+                    JSONArray arr=jsonObject.getJSONArray("subject");
+                    JSONArray arr1=jsonObject.getJSONArray("marks");
+
+
+                    String sub1 = arr.getString(0)+"\n"+arr1.getString(0);
+                    String sub2 = arr.getString(1)+"\n"+arr1.getString(1);
+                    String sub3 = arr.getString(2)+"\n"+arr1.getString(2);
+                    String sub4 = arr.getString(3)+"\n"+arr1.getString(3);
+                    String sub5 = arr.getString(4)+"\n"+arr1.getString(4);
+                    String sub6 = arr.getString(5)+"\n"+arr1.getString(5);
+                    s1.setText(sub1);
+                    s2.setText(sub2);
+                    s3.setText(sub3);
+                    s4.setText(sub4);
+                    s5.setText(sub5);
+                    s6.setText(sub6);
+
+                    // Launch User activity
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_LONG).show();
+
+            }
+
+        }){
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting params to login url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("sessional",sess);
+                params.put("semester",sem);
+                params.put("rollno",roll);
+                return params;
+            }
+        }
+
+
+
+                ;
+        // Adding request to request queue
+        Appsingleton.getInstance(getApplicationContext()).addToRequestQueue(strReq1,cancel_req_tag1);
+    }
+    }
+
