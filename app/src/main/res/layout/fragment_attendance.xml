@@ -5,10 +5,57 @@
     android:layout_height="match_parent"
     tools:context=".Attendance">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <Button
+        android:background="@drawable/oval_shape_register"
+        android:textColor="@color/white"
+        android:id="@+id/search"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="FIND YOUR ATTENDANCE"
+        />
+    <TableLayout
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableRow
+            android:layout_margin="20dp"
+            >
+            <TextView
+                android:textSize="13dp"
+                android:layout_margin="10dp"
+                android:id="@+id/subject1"
+                />
+            <TextView
+                android:textSize="13dp"
+                android:layout_margin="10dp"
+                android:id="@+id/subject2"
+                />
+            <TextView
+                android:textSize="13dp"
+                android:layout_margin="10dp"
+                android:id="@+id/subject3"
+                />
+        </TableRow>
+        <TableRow
+            android:layout_margin="20dp"
+            >
+            <TextView
+                android:textSize="13dp"
+                android:layout_margin="10dp"
+                android:id="@+id/subject4"
+                />
+            <TextView
+                android:textSize="13dp"
+                android:layout_margin="10dp"
+                android:id="@+id/subject5"
+                />
+            <TextView
+                android:textSize="13dp"
+                android:layout_margin="10dp"
+                android:id="@+id/subject6"
+                />
+        </TableRow>
 
+    </TableLayout>
 </FrameLayout>

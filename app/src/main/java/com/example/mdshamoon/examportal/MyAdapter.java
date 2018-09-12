@@ -19,8 +19,6 @@ public class MyAdapter extends FragmentPagerAdapter {
                 return new Sessional_marks();
             case 2:
                 return new Attendance();
-            case 3:
-                return new Debarred_list();
             default:
                 return null;
         }
@@ -28,7 +26,7 @@ public class MyAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return 3;
     }
 
     @Nullable
@@ -41,8 +39,6 @@ public class MyAdapter extends FragmentPagerAdapter {
                 return "sessional marks";
             case 2:
                 return "attendance";
-            case 3:
-                return "Debarred List";
         }
 
         return super.getPageTitle(position);
