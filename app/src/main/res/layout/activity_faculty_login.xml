@@ -43,7 +43,7 @@
                     android:id="@+id/input_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Username"
+                    android:hint="Userid"
                     android:padding="8dp"
                     android:drawableLeft="@drawable/ic_email"
                     android:background="@drawable/oval_shape_edittext"
