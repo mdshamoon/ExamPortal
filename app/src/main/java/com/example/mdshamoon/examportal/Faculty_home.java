@@ -60,8 +60,8 @@ Button button;
 
         year=findViewById(R.id.year);
         lecture=findViewById(R.id.lecture);
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item,year_content);
-        ArrayAdapter<String> adapter1=new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item,lecture_content);
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,year_content);
+        ArrayAdapter<String> adapter1=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,lecture_content);
         button=findViewById(R.id.attend);
         year.setAdapter(adapter);
         lecture.setAdapter(adapter1);
@@ -95,7 +95,7 @@ Button button;
                             {
                                list.add(jObj.getString(i)) ;
                             }
-                            ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_multiple_choice, list);
+                            ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(Faculty_home.this, android.R.layout.simple_list_item_multiple_choice, list);
                             myList.setAdapter(adapter2);
 
 
