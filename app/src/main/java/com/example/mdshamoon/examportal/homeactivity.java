@@ -29,7 +29,7 @@ public class homeactivity extends AppCompatActivity {
         faculty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(homeactivity.this,faculty_login.class);
+                Intent intent=new Intent(homeactivity.this,Faculty_home.class);
                 startActivity(intent);
             }
         });
