@@ -26,48 +26,42 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Faculty_home extends AppCompatActivity {
-Spinner year,lecture;
+Spinner year,lecture,subj;
 ListView myList;
 Button getChoice;
+    ArrayAdapter<String> adapter2;
+    String selected="";
     private static final String TAG = "List";
-    String[] listContent = {
 
-            "Shamoon",
-
-            "Lakshya",
-
-            "Ritik",
-
-            "kazim",
-
-            "Umesh",
-
-
-
-    };
 
     private static final String URL_FOR_LOGIN = "https://spidersdsc.com/list.php";
+    private static final String URL_FOR_LOGI = "https://spidersdsc.com/update.php";
 
     ArrayList<String> list=new ArrayList<String>();
-String year_content[]={"1","2","3","4"};
-String lecture_content[]={"cse"};
+String year_content[]={"year","1","2","3","4"};
+String lecture_content[]={"branch","cse","civil","ece"};
+String subj_content[]={"subjects","DA","advance java","networks","graphics","ppl","simulation"};
 Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faculty_home);
-
+  getChoice=findViewById(R.id.take);
         year=findViewById(R.id.year);
         lecture=findViewById(R.id.lecture);
+        subj=findViewById(R.id.subj);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,year_content);
         ArrayAdapter<String> adapter1=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,lecture_content);
+        ArrayAdapter<String> adapter3=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,subj_content);
         button=findViewById(R.id.attend);
         year.setAdapter(adapter);
         lecture.setAdapter(adapter1);
+        subj.setAdapter(adapter3);
         myList = (ListView)findViewById(R.id.list);
 
         myList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        adapter2 = new ArrayAdapter<String>(Faculty_home.this, android.R.layout.simple_list_item_multiple_choice, list);
 
 
         button.setOnClickListener(new Button.OnClickListener(){
@@ -78,8 +72,7 @@ Button button;
 
             public void onClick(View v) {
 
-            
-
+adapter2.clear();
 
                 StringRequest strReq = new StringRequest(Request.Method.POST,
                         URL_FOR_LOGIN, new Response.Listener<String>() {
@@ -95,7 +88,7 @@ Button button;
                             {
                                list.add(jObj.getString(i)) ;
                             }
-                            ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(Faculty_home.this, android.R.layout.simple_list_item_multiple_choice, list);
+
                             myList.setAdapter(adapter2);
 
 
@@ -118,29 +111,14 @@ Button button;
                 });
                 // Adding request to request queue
                 Appsingleton.getInstance(getApplicationContext()).addToRequestQueue(strReq,"cancel");
+
+
+
+//
+//
+
+
             }
-
-//            String selected = "";
-//
-//
-//
-//                int cntChoice = myList.getCount();
-//
-//                SparseBooleanArray sparseBooleanArray = myList.getCheckedItemPositions();
-//
-//                for(int i = 0; i < cntChoice; i++){
-//
-//                    if(sparseBooleanArray.get(i)) {
-//
-//                        selected += myList.getItemAtPosition(i).toString() + "\n";
-//
-
-//
-//                    }
-//
-//                }
-//
-//
 //
 //                Toast.makeText(Faculty_home.this,
 //
@@ -149,6 +127,72 @@ Button button;
 //                        Toast.LENGTH_LONG).show();
 
             });
+
+        getChoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                selected="";
+                final int cntChoice = myList.getCount();
+
+                SparseBooleanArray sparseBooleanArray = myList.getCheckedItemPositions();
+
+                for(int i = 0; i < cntChoice; i++){
+
+                    if(sparseBooleanArray.get(i)) {
+
+                        selected += myList.getItemAtPosition(i).toString()+" ";
+
+                        }
+
+                }
+
+
+                StringRequest strReq1 = new StringRequest(Request.Method.POST,
+                        URL_FOR_LOGI, new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject=new JSONObject(response);
+                            Boolean error=jsonObject.getBoolean("error");
+                            if(!error)
+                            {
+                                Toast.makeText(getApplicationContext(),"Succesful submission",Toast.LENGTH_LONG).show();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e(TAG, "Login Error: " + error.getMessage());
+                        Toast.makeText(getApplicationContext(),
+                                error.getMessage(), Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+                    @Override
+                    protected Map<String, String> getParams() {
+                        // Posting params to login url
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("names", selected);
+                        params.put("subject",subj.getSelectedItem().toString());
+
+                        return params;
+                    }};
+
+                // Adding request to request queue
+                Appsingleton.getInstance(getApplicationContext()).addToRequestQueue(strReq1,"cancel");
+
+
+
+            }
+        });
 
 
 
