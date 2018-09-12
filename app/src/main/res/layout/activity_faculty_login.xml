@@ -84,7 +84,7 @@
                 android:layout_marginTop="24dp"
                 android:background="@drawable/oval_shape_login"
                 android:padding="12dp"
-                android:text="LOGIN TO CLASSIFIEDS"
+                android:text="LOGIN TO EXAM PORTAL"
                 android:textColor="@color/white" />
 
             <LinearLayout
